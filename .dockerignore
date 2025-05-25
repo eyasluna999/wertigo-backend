@@ -1,0 +1,94 @@
+# Git
+.git
+.gitignore
+.github
+.gitlab
+.gitlab-ci.yml
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Virtual Environment
+venv/
+ENV/
+.env
+.venv
+env.bak/
+venv.bak/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*.sublime-workspace
+*.sublime-project
+
+# Logs
+*.log
+logs/
+log/
+
+# Local development
+.env
+.env.txt
+.env.*
+*.env
+
+# Model files (will be downloaded at runtime)
+model_output/*
+!model_output/.gitkeep
+
+# Documentation
+docs/
+*.md
+LICENSE
+CHANGELOG
+README*
+
+# Test files
+tests/
+test/
+testing/
+*_test.py
+*_tests.py
+test_*.py
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+*~
+
+# Database
+*.db
+*.sqlite3
+*.sqlite
+
+# Cache
+.cache/
+.pytest_cache/
+.coverage
+htmlcov/ 
