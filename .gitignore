@@ -1,6 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Model files
+model_output/*
+!model_output/wertigo.pt
+
 .env
 .env.txt
-__pycache__/
 *.pyc
 *.pyo
 *.pyd

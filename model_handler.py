@@ -50,32 +50,34 @@ def import_model_components():
 # Load model from saved state
 def load_model(model_path=None):
     """
-    Load the model from Hugging Face or local path
+    Load the model from local path or Hugging Face as fallback
     """
+    if model_path is None:
+        model_path = os.path.join("model_output", MODEL_FILENAME)
+    
+    # First try to load from local path
+    if os.path.exists(model_path):
+        try:
+            logger.info(f"Loading model from local path: {model_path}")
+            model = torch.load(model_path)
+            logger.info("Model loaded successfully from local path")
+            return model
+        except Exception as e:
+            logger.warning(f"Failed to load local model: {e}")
+    
+    # If local load fails, try Hugging Face
     try:
-        # Try to download from Hugging Face first
         logger.info(f"Attempting to download model from {HF_REPO}")
         model_path = hf_hub_download(
             repo_id=HF_REPO,
             filename=MODEL_FILENAME
         )
         logger.info(f"Successfully downloaded model to {model_path}")
-    except Exception as e:
-        logger.warning(f"Failed to download from Hugging Face: {e}")
-        if model_path is None:
-            model_path = os.path.join("model_output", MODEL_FILENAME)
-        logger.info(f"Using local model at {model_path}")
-    
-    # Ensure model_output directory exists
-    os.makedirs("model_output", exist_ok=True)
-    
-    # Load the model
-    try:
         model = torch.load(model_path)
-        logger.info("Model loaded successfully")
+        logger.info("Model loaded successfully from Hugging Face")
         return model
     except Exception as e:
-        logger.error(f"Error loading model: {e}")
+        logger.error(f"Failed to load model from both local and Hugging Face: {e}")
         raise
 
 def save_model(model, model_path=None):
